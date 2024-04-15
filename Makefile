@@ -4,13 +4,13 @@ VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HE
 TARGETOS=linux #linux darwin windows
 TARGETARCH=arm64 #amd64
 
-Linux:
+linux:
 	$(MAKE) image TARGETOS=linux TARGETARCH=${TARGETARCH}
 
-Win:
+windows:
 	$(MAKE) image TARGETOS=windows TARGETARCH=${TARGETARCH}
 
-Mac:
+macos:
 	$(MAKE) image TARGETOS=darwin TARGETARCH=${TARGETARCH}
 
 format: 
@@ -26,7 +26,7 @@ get:
 	go get
 
 build: format get
-	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="github.com/mintniron/kbot/cmd.appVersion={VERSION}
+	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="github.com/mintniron/kbot/cmd.appVersion=${VERSION}
 
 image:
 	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH} --build-arg=TARGETOS=${TARGETOS} --build-arg=TARGETARCH=${TARGETARCH}
