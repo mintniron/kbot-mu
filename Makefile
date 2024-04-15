@@ -3,7 +3,6 @@ REGISTRY=mintniron
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 TARGETOS=linux # darwin windows
 TARGETARCH=amd64 # amd64 arm64
-#VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 #TARGETOS=$(shell uname -s | tr "[:upper:]" "[:lower:]")
 #TARGETARCH=${shell uname -m}
 
