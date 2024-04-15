@@ -1,8 +1,8 @@
 APP=$(shell basename $(shell git remote get-url origin))
 REGISTRY=mintniron
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
-TARGETOS=linux #linux darwin windows
-TARGETARCH=arm64 #amd64
+TARGETOS=linux# darwin windows
+TARGETARCH=amd64# amd64 arm64
 
 linux:
 	$(MAKE) image TARGETOS=linux TARGETARCH=${TARGETARCH}
@@ -13,13 +13,13 @@ windows:
 macos:
 	$(MAKE) image TARGETOS=darwin TARGETARCH=${TARGETARCH}
 
-format: 
+format:
 	gofmt -s -w ./
 
 lint:
 	golint
 
-test: 
+test:
 	go test -v
 
 get:
