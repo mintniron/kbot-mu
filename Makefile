@@ -1,6 +1,6 @@
 APP=$(shell basename $(shell git remote get-url origin))
 REGISTRY=mintniron
-VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
+VERSION=kbot:v1.2
 TARGETOS=linux # darwin windows
 TARGETARCH=amd64 # amd64 arm64
 #TARGETOS=$(shell uname -s | tr "[:upper:]" "[:lower:]")
